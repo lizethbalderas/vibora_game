@@ -37,7 +37,7 @@ def move():
         food.y = randrange(-15, 15) * 10
     else:
         snake.pop(0)
-
+    move_food()
     clear()
 
     for body in snake:
@@ -46,6 +46,25 @@ def move():
     square(food.x, food.y, 9, food_color)
     update()
     ontimer(move, 100)
+
+def move_food() :
+    direction = randrange(4)
+
+    new_x = food.x
+    new_y = food.y
+
+    if direction ==0:
+        new_x += 10
+    elif direction == 1:
+        new_x -= 10
+    elif direction == 2:
+        new_y +=10
+    else:
+        new_y -=10
+
+    if -200 < new_x < 190 and -200 < new_y < 190:
+        food.x = new_x
+        food.y = new_y
 
 setup(420, 420, 370, 0)
 hideturtle()
